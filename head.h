@@ -1,5 +1,7 @@
 #include<iostream>
 #include<map>
+//#include<math>
+//#include<algorithm>
 #include<fstream>
 #include<assert.h>
 
@@ -34,6 +36,7 @@ class list
 		void nodup();
 		node* n_th_last(int n);
 		void del(node *r);
+//		list* sum(list& a,list &b);
 };
 
 void list::remove(int n)
@@ -149,6 +152,9 @@ void list::display()
 
 void list::add(node* e, int ind)
 {
+
+//	cout<<"love"<<endl;
+//	cout<<"len = "<<len<<endl;
 			if(len == 0)
 			{
 				head = e;
@@ -193,6 +199,67 @@ void list::del(node* r)
 		r->next = r->next->next;
 
 		delete tmp;
+}
+
+list* sum(list& a, list& b)
+{
+
+// if one of thme is null list, just return the other list`
+	if(a.len == 0) return &b;
+	else if(b.len == 0) return &a;
+	int n = max(a.len,b.len);
+	
+
+	node* s1;
+	node* s2;
+	s1 = a.head;
+	s2 = b.head;
+
+
+// check the sum digit by digit, node by node, if node of one list ends, just copy the node of the other list
+	list *r = new list();
+	
+	int inc = 0;
+	for(int i =0;i<n;i++)
+	{
+		if(s1 == NULL) 
+		{
+			node* tp = new node(s2->val + inc);
+			r->add(tp,1),
+			s2 = s2->next;
+			inc = 0;
+			continue;
+		}
+		else if(s2 == NULL)
+		{
+			node* tp = new node(s1->val + inc);
+			r->add(tp,1),
+			s1 = s1->next;
+			inc = 0;
+			continue;
+		}
+		int tmp = s1->val + s2->val;
+		if( tmp + inc< 10)
+		{
+			node* tp = new node(tmp+inc);
+			r->add(tp,1);		
+			inc = 0;
+		}
+		else
+		{
+//			if(i == 2) cout<<"tmp = "<<tmp<<endl;
+			tmp = (tmp+inc)%10;
+//			if(i == 2) cout<<"tmp = "<<tmp<<endl;
+			node* tp = new node(tmp);
+			r->add(tp,1);		
+			inc = 1;	
+		}
+		s1 = s1->next;
+		s2 = s2->next;
+		
+	}
+	return r;
+
 }
 
 
