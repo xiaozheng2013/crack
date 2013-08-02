@@ -5,18 +5,25 @@ using namespace std;
 int main(void)
 {
 
-	Stack t;
-	for(int i=0;i<5;i++)
+	SetOfStacks t;
+	for(int i=0;i<22;i++)
 	{
 		node *tmp = new node(i);
 		t.push(tmp);
+		t.display();
+		//cout<<"now the min number is "<<t.Min()<<endl;
 	}
 		
 	t.display();
 
 	t.pop();
 	t.display();
+	for(int i=0;i<10;i++)
+	t.popAt(1);
 
+	t.display();
+
+/*
 	Queue p;
 	for(int i=0;i<5;i++)
 	{
@@ -41,6 +48,7 @@ int main(void)
 	p.dequeue();
 	p.display();
 
+*/
 	return 0;
 
 }
