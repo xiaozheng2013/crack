@@ -22,8 +22,11 @@ public:
 	vector<int> min;
 	
 	Stack(){ size = 0; top = NULL;}
+	int isEmpty();
 	void push(node* t);
 	int pop();
+	int peek();
+	//void sort();
 	void display();
 	int Min()
 	{
@@ -58,6 +61,23 @@ public:
 	int dequeue();
 	void display();
 };
+
+class S2Queue{
+public:
+	Stack s1;
+	Stack s2;
+	int size;
+	S2Queue() { size = 0;}
+
+	void enqueue(node *t);
+	int dequeue();
+	void display();
+};
+	
+int Stack::isEmpty()
+{
+	return size>0 ? 0 : 1;
+}	
 	
 void Stack::push(node *t)
 {
@@ -95,9 +115,46 @@ int Stack::pop()
 	int v = tp->val;
 	delete tp;
 	size--;
-	cout<<"the value "<<v<<" is popped !"<<endl;
+	//cout<<"the value "<<v<<" is popped !"<<endl;
 	min.erase(min.begin() + size);
 	return v;
+}
+
+int Stack::peek()
+{
+	assert(size>0);
+	return top->val;
+}
+
+void sort(Stack& s, int n)
+{
+	assert(n>=0);
+	if(n == 1 || n == 0) return; 
+	Stack t;
+	int max = s.peek();
+	int s0 = s.size;
+	while(s.size > s0 - n)
+	{
+		int tmp = s.pop();
+		if(tmp>max) max = tmp;
+		node* tp = new node(tmp);
+		t.push(tp);
+	}
+
+	node* tp = new node(max);
+	s.push(tp);
+	while(t.isEmpty() == 0) 
+	{
+		int tmp = t.pop();
+		if(tmp == max) continue;
+		node *tp = new node(tmp);
+		s.push(tp);
+		//cout<<"s.size = "<<s.size<<endl;
+	}
+	
+	sort(s,n-1);
+	return;
+
 }
 
 void Stack::display()
@@ -201,7 +258,7 @@ int Queue::dequeue()
 		
 	delete tmp;
 	size--;
-	cout<<"the value "<<r<<" is dequeued !"<<endl;
+	//cout<<"the value "<<r<<" is dequeued !"<<endl;
 	return r;
 }
 
@@ -216,3 +273,37 @@ void Queue::display()
 	cout<<endl;
 }
 
+void S2Queue::enqueue(node* t)
+{
+	s1.push(t);
+	size++;
+}
+
+void Reverse(Stack& a, Stack& b)
+{
+	if(a.size == 0) return;
+	int tp = a.size;
+	for(int i=0;i<tp;i++)
+	{
+		int tp = a.pop();	
+		node *tmp = new node(tp);
+		b.push(tmp);
+	}
+	return;
+}
+		
+int S2Queue::dequeue()
+{
+	Reverse(s1,s2);	
+cout<<"now second rev"<<endl;
+	int tmp = s2.pop();	
+	Reverse(s2,s1);
+	return tmp;
+}
+
+void S2Queue::display()
+{
+	s1.display();
+}
+
+	
