@@ -1,4 +1,3 @@
 all:
-	g++ sq.cpp -o /tmp/sq
-	/tmp/sq
-
+	g++ -ggdb client.cpp -o /tmp/cl
+	time /tmp/cl
