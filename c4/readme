@@ -1,0 +1,25 @@
+4.1 Implement a function to check if a tree is balanced. For the purposes of this question, a balanced tree is defined to be a tree such that no two leaf nodes differ in distance from the root by more than one.
+
+54
+CareerCup.com
+4.1 Implement a function to check if a tree is balanced. For the purposes of this question, a balanced tree is defined to be a tree such that no two leaf nodes differ in distance from the root by more than one.
+_
+________________________________________________________________pg 123
+4.2 Given a directed graph, design an algorithm to find out whether there is a route between two nodes.
+Note: Here I need to do recursion or doing BFS or DFS for better results.
+
+4.3 Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height.
+	note: this problem is very interesting, as I spent a lot of time tackling a very obscure bug, which also raised a question that can we use a pointer without allocating space for when initialization but will allocate space for it later on? The answer is yes, but easiest part to overlook in this code is that I actually pass the pointer without space allocated to a function as a parameter, but without a dereferencing operator, which means that I actually passed a copy of that pointer to the function, thus the code will not return a desired(designated) result. Actually it says the code terminates abnormally. (Next time I would thought about this kind of mistake when confronted with such error statements). Another way to round with this situation, is first allocate space for the pointer, then change the value pointed by the pointer later on in the function, which will lead to the same destination. Great problem to practice :).
+
+4.4 Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth (i.e., if you have a tree with depth D, you’ll have D linked lists).
+_
+________________________________________________________________pg 126
+4.5 Write an algorithm to find the ‘next’ node (i.e., in-order successor) of a given node in a binary search tree where each node has a link to its parent.
+_
+________________________________________________________________pg 127
+4.6 Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not necessarily a binary search tree.
+_
+________________________________________________________________pg 128
+4.7 You have two very large binary trees: T1, with millions of nodes, and T2, with hundreds of nodes. Create an algorithm to decide if T2 is a subtree of T1.
+
+comments: 4.7 is a hard one to me, I thought about it for nearly 10 minutes and still didn't get the right answer. The answer actually uses a recursive algorithm, but it approaches in a very good and reasonable way.
