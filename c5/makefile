@@ -1,3 +1,3 @@
 all:
-	g++ -ggdb bit2.cpp -o /tmp/sub
+	g++ -ggdb bit3.cpp -o /tmp/sub
 	/tmp/sub
