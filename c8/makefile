@@ -1,7 +1,7 @@
 1:
-	g++ -ggdb re1.cpp -o /tmp/re
+	g++ -ggdb re4.cpp -o /tmp/re
 	/tmp/re
 
-a2:
+2:
 	g++ -ggdb it1.cpp -o /tmp/it
 	/tmp/it
