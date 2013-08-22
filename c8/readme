@@ -11,3 +11,7 @@ _
 ________________________________________________________________pg 171
 8.4 Write a method to compute all permutations of a string.
 
+8.5 Implement an algorithm to print all valid (e.g., properly opened and closed) combinations of n-pairs of parentheses.
+EXAMPLE:
+input: 3 (e.g., 3 pairs of parentheses)
+output: ()()(), ()(()), (())(), ((()))
