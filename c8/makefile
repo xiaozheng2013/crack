@@ -1,5 +1,5 @@
 1:
-	g++ -ggdb re6.cpp -o /tmp/re
+	g++ -ggdb re7.cpp -o /tmp/re
 	/tmp/re
 
 2:
